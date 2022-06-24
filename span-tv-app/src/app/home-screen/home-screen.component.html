@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()" >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div style="padding-left: 65vh ;" *ngIf="menuOption">
+    <span>State: Menu is active and grid is inactive</span>
+  </div>
+  <div style="justify-content: center !important;" *ngIf="!menuOption">
+    <span>State: Menu is inactive and grid is active</span>
+  </div>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+     <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
+        {{shoe}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+
+
+</mat-drawer-container>
