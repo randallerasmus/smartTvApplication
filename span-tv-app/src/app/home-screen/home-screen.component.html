@@ -13,8 +13,8 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
      <mat-selection-list #shoes [multiple]="false">
-      <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
-        {{shoe}}
+      <mat-list-option *ngFor="let topic of typesOfTopics" [value]="topic">
+        {{topic}}
       </mat-list-option>
     </mat-selection-list>
   </mat-drawer>
