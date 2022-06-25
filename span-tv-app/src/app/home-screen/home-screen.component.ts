@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeScreenComponent implements OnInit {
 
-  typesOfShoes: string[] = [
+  typesOfTopics: string[] = [
               'Animation',
               'Cartooning',
               'Character Design',
