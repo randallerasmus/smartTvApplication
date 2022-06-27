@@ -3,8 +3,7 @@ import {Router} from "@angular/router";
 import {select, State, Store} from "@ngrx/store";
 import {TopicService} from "./services/topic-service";
 import {HttpClient} from "@angular/common/http";
-import {TopicActions} from "./actions";
-import {TopicReducer} from "./reducers";
+
 
 
 @Component({
