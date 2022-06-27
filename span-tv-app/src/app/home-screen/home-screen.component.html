@@ -12,7 +12,7 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <mat-selection-list #topic [multiple]="false" >
-      <mat-list-option (click)="selectTopic()" *ngFor="let topic of typesOfTopics" [value]="topic">
+      <mat-list-option (click)="selectTopic(topic)" *ngFor="let topic of typesOfTopics" [value]="topic">
         {{topic}}
       </mat-list-option>
     </mat-selection-list>
