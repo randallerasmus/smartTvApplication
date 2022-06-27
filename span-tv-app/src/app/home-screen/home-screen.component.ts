@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {Store} from "@ngrx/store";
+import {select, State, Store} from "@ngrx/store";
 import {TopicService} from "./services/topic-service";
 import {HttpClient} from "@angular/common/http";
-// import {TopicActions} from "./actions";
+
+
 
 @Component({
   selector: 'app-home-screen',
@@ -13,32 +14,31 @@ import {HttpClient} from "@angular/common/http";
 export class HomeScreenComponent implements OnInit {
 
   // this list must be retrieved from the API
-  typesOfTopics:any[] = [
-              'Animation',
-              'Cartooning',
-              'Character Design',
-              'Comedy',
-              'Design',
-              'Djing',
-              'Engineering',
-              'Game Design'
-              ];
+  // hardcoded values
+  typesOfTopics:any[] = [];
   menuOption: boolean = true;
-
+  private newtopic: any;
   constructor(private router: Router, private topicService: TopicService, private http: HttpClient) { }
 
   ngOnInit(): void {
-  }
-
-  selectTopic() {
+    //load data when opening screen
     this.topicService.getTopics().subscribe((response) =>{
       if(response){
-        console.log('data is dynamic', response[0].title);
+         for(const topic of response){
+         this.newtopic = topic.title
+         this.typesOfTopics.push(this.newtopic);
+        }
       }
     })
+  }
 
-   }
-
-
+  selectTopic(title: any) {
+      // Calling the service directly from the component
+      this.topicService.getTopicsPhotos(title).subscribe((response) =>{
+        if(response){
+          console.log('data is dynamic', response);
+        }
+      })
+    }
   }
 
