@@ -15,13 +15,12 @@ import Urls = TopicObjectResponse.Urls;
 })
 export class HomeScreenComponent implements OnInit {
 
-  // this list must be retrieved from the API
-  // hardcoded values
   typesOfTopics:any[] = [];
   menuOption: boolean = true;
   private newtopic: any;
   pictures: Urls[] | undefined
   topicPhotos:any[] = [];
+
   constructor(private router: Router, private topicService: TopicService) { }
 
   ngOnInit(): void {
@@ -37,21 +36,17 @@ export class HomeScreenComponent implements OnInit {
   }
 
   selectTopic(title: any) {
-
       // Calling the service directly from the component
       this.topicService.getTopicsPhotos(title).subscribe((response) =>{
         if(response){
-
           // add a reset here
           for(const topic of response){
-
             this.pictures = topic.urls.small;
            console.log('image', topic.links)
            this.topicPhotos.push(this.pictures);
           }
         }
       })
-
     }
   }
 
