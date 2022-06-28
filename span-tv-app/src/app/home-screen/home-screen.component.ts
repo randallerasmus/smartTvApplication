@@ -3,6 +3,8 @@ import {Router} from "@angular/router";
 import {select, State, Store} from "@ngrx/store";
 import {TopicService} from "./services/topic-service";
 import {HttpClient} from "@angular/common/http";
+// @ts-ignore
+import Urls = TopicObjectResponse.Urls;
 
 
 
@@ -18,7 +20,9 @@ export class HomeScreenComponent implements OnInit {
   typesOfTopics:any[] = [];
   menuOption: boolean = true;
   private newtopic: any;
-  constructor(private router: Router, private topicService: TopicService, private http: HttpClient) { }
+  pictures: Urls[] | undefined
+  topicPhotos:any[] = [];
+  constructor(private router: Router, private topicService: TopicService) { }
 
   ngOnInit(): void {
     //load data when opening screen
@@ -33,12 +37,21 @@ export class HomeScreenComponent implements OnInit {
   }
 
   selectTopic(title: any) {
+
       // Calling the service directly from the component
       this.topicService.getTopicsPhotos(title).subscribe((response) =>{
         if(response){
-          console.log('data is dynamic', response);
+
+          // add a reset here
+          for(const topic of response){
+
+            this.pictures = topic.urls.small;
+           console.log('image', topic.links)
+           this.topicPhotos.push(this.pictures);
+          }
         }
       })
+
     }
   }
 

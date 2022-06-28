@@ -10,13 +10,18 @@
   </div>
 </mat-toolbar>
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
     <mat-selection-list #topic [multiple]="false" >
       <mat-list-option (click)="selectTopic(topic)" *ngFor="let topic of typesOfTopics" [value]="topic">
         {{topic}}
       </mat-list-option>
     </mat-selection-list>
+
   </mat-drawer>
+  <ul *ngFor="let photo of topicPhotos"  >
+       <div class="column">
+         <img [src]="photo"></div>
+  </ul>
  </mat-drawer-container>
 
 

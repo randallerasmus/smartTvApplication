@@ -13,4 +13,25 @@
 
 .example-sidenav {
   padding: 0px;
- }
+}
+
+ul {
+  box-sizing: border-box;
+}
+
+.column {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 2em;
+  float: left;
+  margin-left: 1em;
+  margin-right: 0em;
+  padding: 0.8em;
+}
+
+.column img {
+  height: 20em;
+  width: 18em;
+}
+
