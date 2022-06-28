@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 // @ts-ignore
@@ -12,21 +12,19 @@ const CLIENT_ID = 'DhxXHSFGsWRLoQbnD0zUm4R2LEl6BS3shh2D8V8ie5k';
 })
 export class TopicService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getTopics(): Observable<RootObject[]> {
     return this.http.get<RootObject[]>(`${CONFIGURATION_SERVICE_BASE_URL}/topics?page=1&client_id=${CLIENT_ID}`);
   }
 
-  getTopicsPhotos(photoEntry:any): Observable<RootObject[]> {
+  getTopicsPhotos(photoEntry: any): Observable<RootObject[]> {
     console.log(photoEntry)
     var lowercaseEntry = photoEntry.toLowerCase();
     return this.http.get<RootObject[]>(`${CONFIGURATION_SERVICE_BASE_URL}/topics/${lowercaseEntry}/photos/?page=1&client_id=${CLIENT_ID}`);
   }
 
-  getPhotos(photoEntry:any): Observable<RootObject[]> {
+  getPhotos(photoEntry: any): Observable<RootObject[]> {
     return this.http.get<RootObject[]>(`${CONFIGURATION_SERVICE_BASE_URL}/search/photos/${photoEntry.query}`);
   }
-
-
 }
