@@ -16,10 +16,13 @@ import Urls = TopicObjectResponse.Urls;
 export class HomeScreenComponent implements OnInit {
 
   typesOfTopics:any[] = [];
-  menuOption: boolean = true;
+  menuOption: boolean = false;
   private newtopic: any;
   pictures: Urls[] | undefined
   topicPhotos:any[] = [];
+
+  public show:boolean = true;
+  public toolbarMenu:any = 'Show';
 
   constructor(private router: Router, private topicService: TopicService) { }
 
@@ -30,9 +33,20 @@ export class HomeScreenComponent implements OnInit {
          for(const topic of response){
          this.newtopic = topic.title
          this.typesOfTopics.push(this.newtopic);
+
         }
       }
     })
+  }
+
+  toggle() {
+    this.show = !this.show;
+
+    // CHANGE THE NAME OF THE BUTTON.
+    if(this.show)
+      this.toolbarMenu = "State: Menu is active and grid is inactive";
+    else
+      this.toolbarMenu = "State: Menu is inactive and grid is active";
   }
 
   selectTopic(title: any) {

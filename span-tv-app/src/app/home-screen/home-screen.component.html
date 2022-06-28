@@ -1,27 +1,50 @@
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()" >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <div style="padding-left: 65vh ;" *ngIf="menuOption">
-    <span>State: Menu is active and grid is inactive</span>
+<div style="justify-content: space-evenly !important;">
+<mat-toolbar class="home-message" fxLayout="row" (click)="drawer.toggle() && toggle()" >
+
+  <div *ngIf="show;else elseBlock">
+    <h1  class="toolbar-text" >State: Menu is active and grid is inactive</h1>
   </div>
-  <div style="justify-content: center !important;" *ngIf="!menuOption">
-    <span>State: Menu is inactive and grid is active</span>
-  </div>
+
+  <ng-template #elseBlock>
+    <h1 class="toolbar-text">State: Menu is inactive and grid is active</h1>
+  </ng-template>
 </mat-toolbar>
+</div>
+
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
-    <mat-selection-list #topic [multiple]="false" >
-      <mat-list-option (click)="selectTopic(topic)" *ngFor="let topic of typesOfTopics" [value]="topic">
-        {{topic}}
-      </mat-list-option>
-    </mat-selection-list>
-
+    <div>
+      <mat-selection-list #topic [multiple]="false" >
+        <mat-list-option (click)="selectTopic(topic)" *ngFor="let topic of typesOfTopics" [value]="topic">
+          {{topic}}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
   </mat-drawer>
-  <ul *ngFor="let photo of topicPhotos"  >
-       <div class="column">
-         <img [src]="photo"></div>
-  </ul>
+
+<!--    <div class="row" *ngFor="let photo of topicPhotos"  >-->
+<!--      <div class="column">-->
+<!--        <img [src]="photo"></div>-->
+<!--    </div>-->
+
+  <carousel
+    [objectFit]="'contain'"
+    [cellWidth]="500"
+    [cellsToShow]="5"
+    [height]="500"
+    arrowsTheme="dark"
+    [cellsToScroll]="1"
+    [overflowCellsLimit]="1"
+  >
+    <div class="carousel-cell" style="display: grid!important;" *ngFor="let photo of topicPhotos">
+      <div class="grid-container">
+        <div class="grid-item">
+          <img [src]="photo" >
+        </div>
+      </div>
+    </div>
+  </carousel>
+
  </mat-drawer-container>
 
 
