@@ -21,8 +21,8 @@ export class HomeScreenComponent implements OnInit {
   menuOption: boolean = true;
   private newtopic: any;
   pictures: Urls[] | undefined
-  typesOfTopicss:any[] = [];
-  constructor(private router: Router, private topicService: TopicService, private http: HttpClient) { }
+  topicPhotos:any[] = [];
+  constructor(private router: Router, private topicService: TopicService) { }
 
   ngOnInit(): void {
     //load data when opening screen
@@ -44,9 +44,10 @@ export class HomeScreenComponent implements OnInit {
 
           // add a reset here
           for(const topic of response){
+
             this.pictures = topic.urls.small;
            console.log('image', topic.links)
-           this.typesOfTopicss.push(this.pictures);
+           this.topicPhotos.push(this.pictures);
           }
         }
       })
