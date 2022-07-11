@@ -205,7 +205,7 @@ declare module TopicObjectResponse {
     urls: Urls2;
   }
 
-  export interface RootObject {
+  export interface TopicObject {
     id: string;
     slug: string;
     title: string;

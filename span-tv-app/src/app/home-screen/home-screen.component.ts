@@ -33,7 +33,6 @@ export class HomeScreenComponent implements OnInit {
          for(const topic of response){
          this.newtopic = topic.title
          this.typesOfTopics.push(this.newtopic);
-
         }
       }
     })
@@ -56,8 +55,7 @@ export class HomeScreenComponent implements OnInit {
           // add a reset here
           for(const topic of response){
             this.pictures = topic.urls.small;
-           console.log('image', topic.links)
-           this.topicPhotos.push(this.pictures);
+            this.topicPhotos.push(this.pictures);
           }
         }
       })

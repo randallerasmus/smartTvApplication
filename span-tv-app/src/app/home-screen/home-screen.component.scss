@@ -29,7 +29,7 @@
 }
 
 
-ul {
+* {
   box-sizing: border-box;
 }
 
@@ -41,11 +41,9 @@ ul {
   float: left;
   margin-left: 1em;
   margin-right: 0em;
-  padding: 0.8em;
 }
 
 .column img {
-  height: 20em;
-  width: 18em;
+  display:inline-table;
 }
 
